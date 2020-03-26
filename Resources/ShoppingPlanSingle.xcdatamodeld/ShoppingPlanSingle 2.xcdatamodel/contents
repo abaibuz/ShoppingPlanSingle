@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Categories" representedClassName="Categories" syncable="YES">
+        <attribute name="favourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductsCD" inverseName="category" inverseEntity="ProductsCD" syncable="YES"/>
+    </entity>
+    <entity name="DocPurchase" representedClassName="DocPurchase" syncable="YES">
+        <attribute name="checkImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="favourite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purchasedNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="purchasedSum" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="scheduledNumber" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="scheduledSum" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="tline" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TLine" inverseName="doc" inverseEntity="TLine" syncable="YES"/>
+    </entity>
+    <entity name="ProductsCD" representedClassName="ProductsCD" syncable="YES">
+        <attribute name="favourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sum" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="product" inverseEntity="Categories" syncable="YES"/>
+        <relationship name="line" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TLine" inverseName="productLine" inverseEntity="TLine" syncable="YES"/>
+        <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UnitCD" inverseName="product" inverseEntity="UnitCD" syncable="YES"/>
+        <relationship name="wishList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WishList" inverseName="wishListProducts" inverseEntity="WishList" syncable="YES"/>
+    </entity>
+    <entity name="TLine" representedClassName="TLine" syncable="YES">
+        <attribute name="numberLine" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="priceProduct" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="quantityProduct" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="switchLine" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="doc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocPurchase" inverseName="tline" inverseEntity="DocPurchase" syncable="YES"/>
+        <relationship name="productLine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductsCD" inverseName="line" inverseEntity="ProductsCD" syncable="YES"/>
+        <relationship name="unitLine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UnitCD" inverseName="lineUnit" inverseEntity="UnitCD" syncable="YES"/>
+    </entity>
+    <entity name="UnitCD" representedClassName="UnitCD" syncable="YES">
+        <attribute name="favourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fullname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortname" attributeType="String" syncable="YES"/>
+        <relationship name="lineUnit" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TLine" inverseName="unitLine" inverseEntity="TLine" syncable="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductsCD" inverseName="unit" inverseEntity="ProductsCD" syncable="YES"/>
+    </entity>
+    <entity name="WishList" representedClassName="WishList" syncable="YES">
+        <attribute name="favourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="wishListProducts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductsCD" inverseName="wishList" inverseEntity="ProductsCD" syncable="YES"/>
+    </entity>
+    <fetchRequest name="fetchAllTLine" entity="TLine"/>
+    <fetchRequest name="fetchSwitchTLine" entity="TLine" predicateString="switchLine == 1"/>
+    <elements>
+        <element name="Categories" positionX="-206.62890625" positionY="85.51171875" width="128" height="105"/>
+        <element name="DocPurchase" positionX="-22.921875" positionY="-49.10546875" width="128" height="195"/>
+        <element name="ProductsCD" positionX="-385.1875" positionY="157.2109375" width="128" height="103"/>
+        <element name="TLine" positionX="438.91796875" positionY="325.66015625" width="128" height="148"/>
+        <element name="UnitCD" positionX="-351" positionY="486" width="128" height="120"/>
+        <element name="WishList" positionX="-89.328125" positionY="312.06640625" width="128" height="103"/>
+    </elements>
+</model>
