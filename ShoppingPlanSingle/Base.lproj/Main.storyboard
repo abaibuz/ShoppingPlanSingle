@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgT-dd-Crn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgT-dd-Crn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,8 +31,8 @@
                     <view key="view" contentMode="scaleToFill" id="oiP-XP-DmX" customClass="SWRevealView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jqc-v8-fdC"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <segue destination="fQ8-YW-Uc6" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="II0-mI-FaB"/>
@@ -212,14 +212,14 @@
                                 <items>
                                     <navigationItem title="Единица измерения" id="C42-JV-Jh6">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="Wm8-9C-GkM">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F3Q-Pi-yQR">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="F3Q-Pi-yQR">
                                                 <rect key="frame" x="20" y="7" width="72" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Отмена"/>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mOc-LK-Ve2">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0bA-Xg-bdt">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0bA-Xg-bdt">
                                                 <rect key="frame" x="317" y="7" width="77" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Сохранить"/>
@@ -251,7 +251,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Краткое наименование*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXl-We-aws">
-                                                <rect key="frame" x="8" y="8" width="195.5" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="195" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="188" id="8Ns-Y9-2vA"/>
                                                     <constraint firstAttribute="height" constant="21" id="Hhm-8F-bCn"/>
@@ -355,6 +355,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="zuI-Rg-xrt"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -366,7 +367,6 @@
                             <constraint firstItem="zuI-Rg-xrt" firstAttribute="trailing" secondItem="VRh-1R-jh8" secondAttribute="trailing" id="sBl-AJ-548"/>
                             <constraint firstItem="VRh-1R-jh8" firstAttribute="leading" secondItem="zuI-Rg-xrt" secondAttribute="leading" id="zsv-FB-2wJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zuI-Rg-xrt"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="F3w-QW-EoD" appends="YES" id="mH6-GD-AFW"/>
                         </connections>
@@ -464,7 +464,7 @@
             <objects>
                 <navigationController id="fGl-B2-qu5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iDt-eJ-pUz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -554,14 +554,14 @@
                                 <items>
                                     <navigationItem title="Категория" id="5yU-NR-fPo">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="SJt-Lh-1cK">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Nn9-pR-gDd">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Nn9-pR-gDd">
                                                 <rect key="frame" x="20" y="7" width="72" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Отмена"/>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="RWY-4f-veR">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6rS-ni-x4C">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6rS-ni-x4C">
                                                 <rect key="frame" x="317" y="7" width="77" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Сохранить"/>
@@ -674,7 +674,7 @@
                                     </view>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-картина-96 цветная" translatesAutoresizingMaskIntoConstraints="NO" id="j2L-zq-I4C">
                                         <rect key="frame" x="145" y="123" width="100" height="100"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <color key="backgroundColor" systemColor="lightTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="GN0-ga-trI"/>
                                             <constraint firstAttribute="width" constant="100" id="uYN-Tu-s4M"/>
@@ -692,6 +692,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Uub-sa-dBe"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -703,7 +704,6 @@
                             <constraint firstItem="MYa-kb-fZV" firstAttribute="top" secondItem="Uub-sa-dBe" secondAttribute="top" id="e91-zA-lFZ"/>
                             <constraint firstItem="MYa-kb-fZV" firstAttribute="leading" secondItem="Uub-sa-dBe" secondAttribute="leading" id="tNe-ie-Kw7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Uub-sa-dBe"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="W2o-0K-z0Q" appends="YES" id="HVn-fS-ayh"/>
                         </connections>
@@ -733,6 +733,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlK-IZ-189">
+                                <rect key="frame" x="0.0" y="44" width="414" height="808"/>
+                                <items>
+                                    <navigationItem title="Title" id="pJW-M9-ZGn">
+                                        <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up" catalog="system" id="3xc-Mr-pS0"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-3d-meU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
@@ -752,18 +760,23 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wVw-eY-R4P"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ew9-3d-meU" firstAttribute="trailing" secondItem="wVw-eY-R4P" secondAttribute="trailing" id="4Fu-gb-a4k"/>
                             <constraint firstItem="ew9-3d-meU" firstAttribute="leading" secondItem="wVw-eY-R4P" secondAttribute="leading" id="Kcf-Tk-AhK"/>
+                            <constraint firstItem="FlK-IZ-189" firstAttribute="centerY" secondItem="dP6-26-ouF" secondAttribute="centerY" id="NDt-jZ-bvs"/>
                             <constraint firstItem="ew9-3d-meU" firstAttribute="top" secondItem="wVw-eY-R4P" secondAttribute="top" id="RM1-7T-BOE"/>
                             <constraint firstAttribute="bottom" secondItem="ew9-3d-meU" secondAttribute="bottom" id="RmO-kN-OeC"/>
+                            <constraint firstItem="FlK-IZ-189" firstAttribute="trailing" secondItem="ew9-3d-meU" secondAttribute="trailing" id="j3z-sq-yD1"/>
+                            <constraint firstItem="FlK-IZ-189" firstAttribute="leading" secondItem="ew9-3d-meU" secondAttribute="leading" id="kQd-ba-bF3"/>
+                            <constraint firstItem="FlK-IZ-189" firstAttribute="top" secondItem="wVw-eY-R4P" secondAttribute="top" id="yMB-dg-szo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wVw-eY-R4P"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="6es-aE-lHp" id="blW-sd-Fpo"/>
                         <outlet property="scrollView" destination="ew9-3d-meU" id="WHw-BP-ejf"/>
+                        <outlet property="shareButton" destination="3xc-Mr-pS0" id="0gn-0I-9Fu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgs-Q4-oPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -776,7 +789,7 @@
             <objects>
                 <tableViewController id="LCc-2s-KMG" customClass="productsCatalog" customModule="ShoppingPlanSingle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZH6-I9-i6E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -828,26 +841,26 @@
             <objects>
                 <viewController modalPresentationStyle="currentContext" id="8Cg-e8-yiP" customClass="productsAdd" customModule="ShoppingPlanSingle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8m1-8q-fw5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBp-pR-TX0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Wv-oL-2UB"/>
                                 </constraints>
                                 <items>
                                     <navigationItem title="Товар" id="VoK-oz-Mch">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="rFc-Wd-MDl">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t5Q-9g-ejH">
-                                                <rect key="frame" x="20" y="7" width="72" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="t5Q-9g-ejH">
+                                                <rect key="frame" x="20" y="13" width="72" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Отмена"/>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="gyi-ea-5Rs">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j5F-hS-Ano">
-                                                <rect key="frame" x="317" y="7" width="77" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="j5F-hS-Ano">
+                                                <rect key="frame" x="317" y="13" width="77" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Сохранить"/>
                                             </button>
@@ -856,7 +869,7 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwS-HI-Npl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-8s-Rn8">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="452"/>
@@ -954,7 +967,7 @@
                                                     <action selector="editingDidEndQuantity:" destination="8Cg-e8-yiP" eventType="editingDidEnd" id="aBq-5s-j9a"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T93-xZ-wBF" userLabel="ChoiceUnit">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T93-xZ-wBF" userLabel="ChoiceUnit">
                                                 <rect key="frame" x="380" y="192" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="6Fl-5z-K3m"/>
@@ -966,7 +979,7 @@
                                                     <action selector="choiceUnitTapped:" destination="8Cg-e8-yiP" eventType="touchUpInside" id="cuf-AN-CGP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-A7-6NI" userLabel="Choice">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-A7-6NI" userLabel="Choice">
                                                 <rect key="frame" x="380" y="96" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="olr-ym-LPY"/>
@@ -992,7 +1005,7 @@
                                                     <action selector="editingDidEndPrice:" destination="8Cg-e8-yiP" eventType="editingDidEnd" id="2Xt-bW-3GD"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-b1-A6B" userLabel="Clear">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcP-b1-A6B" userLabel="Clear">
                                                 <rect key="frame" x="348" y="192" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="JI1-dn-S8l"/>
@@ -1071,7 +1084,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-картина-96 цветная" translatesAutoresizingMaskIntoConstraints="NO" id="p8p-HS-5ON">
                                                         <rect key="frame" x="5" y="5" width="100" height="100"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                        <color key="backgroundColor" systemColor="lightTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="M53-lv-dpk"/>
                                                             <constraint firstAttribute="width" constant="100" id="bU0-Ek-lzG"/>
@@ -1151,6 +1164,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="OJE-BB-tZp"/>
                         <color key="backgroundColor" red="0.96561482289716805" green="1" blue="0.96516495724493678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -1162,7 +1176,6 @@
                             <constraint firstAttribute="bottom" secondItem="FwS-HI-Npl" secondAttribute="bottom" id="lTC-CS-kP5"/>
                             <constraint firstItem="OJE-BB-tZp" firstAttribute="trailing" secondItem="FwS-HI-Npl" secondAttribute="trailing" id="ng3-uB-Zap"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="OJE-BB-tZp"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="wHJ-w0-riZ" appends="YES" id="apA-dy-buc"/>
                         </connections>
@@ -1628,7 +1641,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfV-GN-WAx" userLabel="addButtom">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfV-GN-WAx" userLabel="addButtom">
                                                         <rect key="frame" x="372" y="33" width="21" height="21"/>
                                                         <accessibility key="accessibilityConfiguration" label="+"/>
                                                         <constraints>
@@ -1705,7 +1718,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-Le-yXm">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-Le-yXm">
                                                         <rect key="frame" x="337" y="2" width="69" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Xd5-fA-h1S"/>
@@ -1781,8 +1794,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.00/0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-O4-qQr" userLabel="TotalSum">
-                                                        <rect key="frame" x="259" y="0.0" width="137" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00/0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-O4-qQr" userLabel="TotalSum">
+                                                        <rect key="frame" x="326" y="0.0" width="70" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Lwf-nX-6H9"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rQC-u3-IZT"/>
@@ -1791,8 +1804,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-BN-K4K" userLabel="ProductNumber">
-                                                        <rect key="frame" x="153" y="0.0" width="82" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-BN-K4K" userLabel="ProductNumber">
+                                                        <rect key="frame" x="232" y="0.0" width="70" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="2hl-se-6Lx"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="sG2-DZ-jzd"/>
@@ -1848,6 +1861,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="xJ2-UB-VU9"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -1858,18 +1872,17 @@
                             <constraint firstItem="mmf-8k-4dc" firstAttribute="leading" secondItem="xJ2-UB-VU9" secondAttribute="leading" id="en1-dX-mmK"/>
                             <constraint firstItem="jpy-yo-CIi" firstAttribute="width" secondItem="xJ2-UB-VU9" secondAttribute="width" id="l8w-G0-76S"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xJ2-UB-VU9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Мои товары" id="SXB-KV-GPW" userLabel="My products">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="kWe-vZ-Z7y">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0XJ-3E-nDa">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0XJ-3E-nDa">
                                 <rect key="frame" x="20" y="7" width="72" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Отмена"/>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="GTx-08-LIp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ORB-l5-3Ge">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ORB-l5-3Ge">
                                 <rect key="frame" x="317" y="7" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Сохранить"/>
@@ -1973,7 +1986,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUS-kP-Cdr">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUS-kP-Cdr">
                                 <rect key="frame" x="61" y="104" width="52" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1989,7 +2002,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyI-za-72U">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyI-za-72U">
                                 <rect key="frame" x="157" y="103" width="73" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2032,7 +2045,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfW-Cu-xIk">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfW-Cu-xIk">
                                 <rect key="frame" x="40" y="70" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="-"/>
@@ -2040,7 +2053,7 @@
                                     <action selector="decreseButtonTapped:" destination="rNb-df-Shr" eventType="touchUpInside" id="ceQ-vp-iBg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-Fh-URQ">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-Fh-URQ">
                                 <rect key="frame" x="142" y="70" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="+"/>
@@ -2049,8 +2062,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DJS-Me-wjR"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <size key="freeformSize" width="300" height="140"/>
                     <connections>
@@ -2176,6 +2189,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fwj-KU-aiL"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qXs-wZ-SNz" firstAttribute="top" secondItem="Fwj-KU-aiL" secondAttribute="top" id="0PO-xE-7gR"/>
@@ -2183,7 +2197,6 @@
                             <constraint firstItem="Fwj-KU-aiL" firstAttribute="bottom" secondItem="qXs-wZ-SNz" secondAttribute="bottom" id="OuN-59-tRK"/>
                             <constraint firstItem="qXs-wZ-SNz" firstAttribute="leading" secondItem="Fwj-KU-aiL" secondAttribute="leading" id="bsN-Cc-mW0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Fwj-KU-aiL"/>
                     </view>
                     <navigationItem key="navigationItem" title="SectionSettingName" id="vjT-zc-dcj">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="reveal-icon" id="Tja-7o-XOj"/>
@@ -2232,6 +2245,34 @@
             <point key="canvasLocation" x="-1342" y="3516"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="6Of-r8-TU6">
+            <size key="intrinsicContentSize" width="31" height="31"/>
+        </designable>
+        <designable name="AED-Ee-bMt">
+            <size key="intrinsicContentSize" width="31" height="31"/>
+        </designable>
+        <designable name="Ad8-Ky-BZ2">
+            <size key="intrinsicContentSize" width="31" height="21"/>
+        </designable>
+        <designable name="Z4C-J2-dSa">
+            <size key="intrinsicContentSize" width="31" height="31"/>
+        </designable>
+        <designable name="gY5-oD-3TG">
+            <size key="intrinsicContentSize" width="21" height="21"/>
+        </designable>
+        <designable name="u9X-mM-48r">
+            <size key="intrinsicContentSize" width="31" height="31"/>
+        </designable>
+    </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="N7b-Rl-Hlc"/>
+        <segue reference="Etg-Lo-ZgD"/>
+        <segue reference="rkG-tX-WvA"/>
+        <segue reference="aZE-bp-QPQ"/>
+        <segue reference="S3C-JS-0Oi"/>
+        <segue reference="f0g-yn-4A2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-3-points-2-filled-17" width="17" height="17"/>
         <image name="icons8-добавить-23" width="22" height="22"/>
@@ -2239,15 +2280,14 @@
         <image name="icons8-картина-96 цветная" width="96" height="96"/>
         <image name="icons8-редактировать-17" width="17" height="17"/>
         <image name="reveal-icon" width="22" height="17"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="вверх вначало" width="22" height="22"/>
         <image name="вниз вконец" width="22" height="22"/>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="N7b-Rl-Hlc"/>
-        <segue reference="SGF-RQ-JJf"/>
-        <segue reference="rkG-tX-WvA"/>
-        <segue reference="SJL-UJ-fFh"/>
-        <segue reference="S3C-JS-0Oi"/>
-        <segue reference="f0g-yn-4A2"/>
-    </inferredMetricsTieBreakers>
 </document>

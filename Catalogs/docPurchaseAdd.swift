@@ -66,11 +66,15 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
     
         if let prIn = self.previuosSelected {
             let prtline = fetchedResultsController.object(at: prIn) as! TLine
-            let prcell = tableView.cellForRow(at: prIn) as! RowTableViewCellForDocPurchase
-            if let image = prtline.productLine?.category?.image {
-                prcell.imageCategory.image = UIImage(data: image as Data)
+            let prcell = tableView.cellForRow(at: prIn)
+            if prcell != nil {
+                let prcell1 = prcell as!  RowTableViewCellForDocPurchase
+                if let image = prtline.productLine?.category?.image {
+                    prcell1.imageCategory.image = UIImage(data: image as Data)
+                }
+                prcell1.imageCategory.isUserInteractionEnabled = false
+                prcell1.imageCategory.gestureRecognizers?.removeAll()
             }
-            prcell.imageCategory.isUserInteractionEnabled = false
         }
         
         if let image = tline.productLine?.image {
@@ -105,7 +109,7 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
         })
             
             let swipeActionConfig = UISwipeActionsConfiguration(actions: [choiceAction])
-            swipeActionConfig.performsFirstActionWithFullSwipe = false
+            swipeActionConfig.performsFirstActionWithFullSwipe = true
             return swipeActionConfig
     }
     
@@ -206,35 +210,75 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
     private var dateDoc = Date()
     @IBOutlet weak var lableDate: UILabel!
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+
     @IBOutlet weak var isPhotoCheck: BEMCheckBox!
     var purchasedSum: Float = 0
     var scheduledSum: Float = 0
     var purchasedNumber: Int16 = 0
     var scheduledNumber: Int16 = 0
+    var undoManagerDoc: UndoManager?
+    
    
     //---------------
     override func viewDidLoad() {
         self.scrollView = scrollViewProduct
         self.shortName = titleDoc
-   //     self.favourite = favouriteElemebt
-   //     self.shortNameLable = nameLabel
         self.fullname = commentDoc
-   //     self.fullNameLable = fullNameLabel
         self.viewForScrollView = viewProduct
         self.navigationController?.navigationBar.barTintColor = self.colorNavigationBar
         super.viewDidLoad()
-        cancelButton.addTarget(self, action: #selector(ElementCatalog<DocPurchase>.cancel), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelDoc), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(ElementCatalog<DocPurchase>.save), for: .touchUpInside)
         titleDoc.addTarget(self, action: #selector(ElementCatalog<DocPurchase>.shortNameEditingChanged), for: .editingChanged)
         commentDoc.addTarget(self, action: #selector(ElementCatalog<DocPurchase>.fullNameEditingChanged), for: .editingChanged)
         
         self.isPhotoCheck.isUserInteractionEnabled = false
-  //      productTable.delegate = self
-  //      productTable.dataSource = self
- //       productTable.allowsSelection = true
         fetchData()
         addButtononView()
-        
+        CoreDataManager.instance.managedObjectContext.undoManager = UndoManager()
+        undoManagerDoc = CoreDataManager.instance.managedObjectContext.undoManager
+        undoManagerDoc?.removeAllActions()
+    }
+    
+    //-------------
+        @objc func cancelDoc(_ sender: Any) {
+          
+          if !dataWasChanged() {
+              self.dismiss(animated: true)
+          } else {
+              self.alertForSaveDataDoc(isExit: true)
+          }
+          
+      }
+    
+    //-----------------
+     private func alertForSaveDataDoc(isExit: Bool) {
+         let alert = UIAlertController(title: "Предупреждение", message: "Данные был изменены! Сохранить?", preferredStyle: .alert)
+         alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler:{  (UIAlertAction) -> Void in
+             self.save(1)
+       //      self.dismiss(animated: true)
+         }))
+         
+         alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: { (UIAlertAction) -> Void in
+             if isExit {
+  //              self.fetchedResultsController = self.fetchedResultsController_start
+ //               self.save(1)
+                self.undoAllChanches()
+                self.dismiss(animated: true)
+             }
+         } ))
+         self.present(alert, animated: true, completion: nil)
+     }
+    
+    //-----------
+    private func undoAllChanches() {
+        if let uM = undoManagerDoc {
+             while uM.canUndo {
+                uM.undo()
+            }
+            uM.removeAllActions()
+            undoManagerDoc = nil
+        }
     }
     
     //---------------
@@ -256,9 +300,10 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
                 let tline = fetchedResultsController.object(at: indexPath) as! TLine
                 tline.switchLine = sender.on
                 self.reloadData()
-                let indexPath1 = fetchedResultsController.indexPath(forObject: tline)
-                self.previuosSelected = indexPath1
-                self.repainTableCell(indexPath: indexPath1)
+                if let indexPath1 = fetchedResultsController.indexPath(forObject: tline) {
+                    self.previuosSelected = indexPath1
+                    self.repainTableCell(indexPath: indexPath1)
+                }
             }
         }
     }
@@ -266,10 +311,12 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
      func fetchData()  {
         if let unit = unit {
             fetchedResultsController = DocPurchase.getTLineOfDoc(docPurchase: unit)
-              do {
+ //           fetchedResultsController_start = DocPurchase.getTLineOfDoc(docPurchase: unit)
+            do {
                 try fetchedResultsController.performFetch()
                 calcTotalSum()
-            } catch {
+ //               fetchedResultsController_start = fetchedResultsController
+              } catch {
                 print(error)
             }
         }
@@ -690,7 +737,7 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
                     }
                     controller.nameUnit = prtline.productLine!.name!
                     controller.nameCatalog = "Товары"
-                controller.product = prtline.productLine
+                    controller.product = prtline.productLine
               }
           }
           else {
@@ -712,7 +759,6 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
         if unit == nil {
            unit = createTypeElement()
            self.copyDataFromField(unit: unit!)
-      //     CoreDataManager.instance.saveContext()
         }
         var mytline: TLine
         if tline == nil {
@@ -766,12 +812,15 @@ class docPurchaseAdd: ElementCatalog<DocPurchase>, UITableViewDataSource, UITabl
         if let indexPath = indexPath {
             self.productTable.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             productTable.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
-            let cell = productTable.cellForRow(at: indexPath) as! RowTableViewCellForDocPurchase
-            let tline = fetchedResultsController.object(at: indexPath) as! TLine
-            if let image = tline.productLine?.image {
-                cell.imageCategory.image = UIImage(data: image as Data)
+            let cell = productTable.cellForRow(at: indexPath)
+            if cell != nil {
+                let cell1 = cell as! RowTableViewCellForDocPurchase
+                let tline = fetchedResultsController.object(at: indexPath) as! TLine
+                if let image = tline.productLine?.image {
+                    cell1.imageCategory.image = UIImage(data: image as Data)
+                }
+                setGactureCell(imageView: cell1.imageCategory)
             }
-            setGactureCell(imageView: cell.imageCategory)
         }
     }
     //----------------

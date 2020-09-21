@@ -98,7 +98,7 @@ class wishListCatalog: Catalog<WishList>, UIGestureRecognizerDelegate {
                 if let image = wishList.wishListProducts?.image {
                     controller.image = UIImage(data: image as Data)
                 } else {
-                    controller.image = UIImage(named: "icons8-картина-96 цветная")
+                    controller.image = nil
                 }
                 controller.nameUnit = wishList.name!
                 controller.nameCatalog = "Товары"

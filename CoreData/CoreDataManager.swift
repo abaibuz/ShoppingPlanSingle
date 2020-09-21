@@ -109,6 +109,7 @@ class CoreDataManager {
         }
     }
     
+    
     func getWishList(favourite: Bool) -> [WishList]! {
         var predicate: NSPredicate!
         if favourite {

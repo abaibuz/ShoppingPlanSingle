@@ -287,7 +287,7 @@ extension UIViewController: SWRevealViewControllerDelegate {
         let mask = image.withRenderingMode(.alwaysTemplate)
         // compute the anticipated width of that non empty string
         let titleAction = NSString(string: title)
-        let stockSize = titleAction.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white])
+        let stockSize = titleAction.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10), NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white])
         // I know my row height
         let height:CGFloat = rowHeight + 2
         // Standard action width computation seems to add 15px on either side of the text

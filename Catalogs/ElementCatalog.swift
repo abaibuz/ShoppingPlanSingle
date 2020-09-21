@@ -36,6 +36,7 @@ class ElementCatalog<TypeElement> : UIViewController, UITextFieldDelegate,  UIIm
         
     }
     
+    //------------------
     private func alertForSaveData(isExit: Bool) {
         let alert = UIAlertController(title: "Предупреждение", message: "Данные был изменены! Сохранить?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler:{  (UIAlertAction) -> Void in
@@ -51,6 +52,7 @@ class ElementCatalog<TypeElement> : UIViewController, UITextFieldDelegate,  UIIm
         self.present(alert, animated: true, completion: nil)
         
     }
+    
     //-----------------
     public func dataWasChanged() -> Bool {
          return false
@@ -399,8 +401,10 @@ class ElementCatalog<TypeElement> : UIViewController, UITextFieldDelegate,  UIIm
   //-----------
     public func imageIsEmpty() -> Bool {
         if let image = self.imageElement.image {
-            let boolVar = (image.isEqual(UIImage(named: "icons8-картина-96 цветная")))
-             return boolVar
+            let data1 = image.pngData()! as NSData
+            let data2 = (UIImage(named: "icons8-картина-96 цветная")?.pngData()!)! as NSData
+            let isEqual = data1.isEqual(to: data2 as Data)
+            return isEqual
         } else {
             return true
         }

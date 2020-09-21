@@ -10,7 +10,19 @@ import Foundation
 import UIKit
 import CoreData
 import AVFoundation
+/*
+protocol ActivityViewControllerDelegate {
+    func activityViewControllerClosed()
+}
 
+class UIActivityViewController: UIViewController {
+    var delegate: ActivityViewControllerDelegate? //ADD A PROPERTY FOR THE DELEGATE
+
+    func yourMethodToCloseTheActivity() {
+        delegate!.activityViewControllerClosed() //ADD THIS LINE TO NOTIFY THE DELEGATE
+    }
+}
+*/
 
 class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,22 +33,28 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
      let imagePicker = UIImagePickerController()
      var sizeImage: CGFloat = 1024
      var imageChange = ImageChangeAct.none
+     var isEmptyImage = false
 
     //----------------
     override func viewDidLoad() {
        super.viewDidLoad()
        if let image1 = image {
           imageView.image = image1
-       } else {
+          isEmptyImage = false
+        } else {
           imageView.image = UIImage(named: "icons8-картина-96 цветная")
+          isEmptyImage = true
         }
         scrollView.delegate = self
         setGacture()
         imagePicker.delegate = self
+
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
+  
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     //-----------------
     @objc func cancelbuttonTapped(_ sender: Any) {
@@ -45,7 +63,7 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
     }
     
     //-------------
-    private func  saveImage() {
+    private func saveImage() {
         var isChangeImage = false
         switch imageChange {
             case .edit:
@@ -107,11 +125,21 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
     //-----------------------
      @objc func sharedButtonTapped(_ sender: Any) {
         let text = "Наименование товара:\n" + self.nameUnit
-        let image = self.image
-        let shareAll = [text, image!] as [Any]
+        if isEmptyImage {
+            return
+        }
+        saveImage()
+        let image1 = self.imageView.image
+        let shareAll = [text, image1!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         //    activityViewController.excludedActivityTypes = [UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToFacebook]
-        activityViewController.popoverPresentationController?.sourceView = self.view
+    
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.barButtonItem = shareButton
+    //        activityViewController.popoverPresentationController?.sourceView = scrollView
+            
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
 
@@ -164,6 +192,7 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
         }
         self.imageView.image = pickedImage.resizeImage(to: self.sizeImage)
         imageChange = .edit
+        isEmptyImage = false
         imagePickerControllerDidCancel(picker)
     }
     //-------
@@ -174,10 +203,19 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
     func clearImage() {
         imageChange = .clear
         self.imageView.image = UIImage(named: "icons8-картина-96 цветная")
+        self.isEmptyImage = true
     }
     //----
     private func showAlertMenu() {
-        let alertController = UIAlertController(title: nameCatalog, message: self.nameUnit, preferredStyle: UIAlertController.Style.actionSheet)
+        var preferredStyle: UIAlertController.Style
+        if UIDevice.current.userInterfaceIdiom == .pad {
+           preferredStyle = .alert
+        }
+        else{
+           preferredStyle = .actionSheet
+        }
+    
+        let alertController = UIAlertController(title: nameCatalog, message: self.nameUnit, preferredStyle: preferredStyle)
         
         let photoAction = UIAlertAction(title: "Сделать фото", style: UIAlertAction.Style.default,  handler: {(alert :UIAlertAction!) in
               self.openCamera()
@@ -193,20 +231,22 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
         gelleryAction.setValue(image3, forKey: "image")
         alertController.addAction(gelleryAction)
         
-        let clearAction = UIAlertAction(title: "Очистить фото", style: UIAlertAction.Style.default,  handler: {(alert :UIAlertAction!) in
-             self.clearImage()
-        })
-        let image4 = UIImage(named: "icons8-удалить-22")
-        clearAction.setValue(image4, forKey: "image")
-        alertController.addAction(clearAction)
+        if !isEmptyImage {
+            let clearAction = UIAlertAction(title: "Очистить фото", style: UIAlertAction.Style.default,  handler: {(alert :UIAlertAction!) in
+                 self.clearImage()
+            })
+            let image4 = UIImage(named: "icons8-удалить-22")
+            clearAction.setValue(image4, forKey: "image")
+            alertController.addAction(clearAction)
+            
+            let sharedAction = UIAlertAction(title: "Поделиться", style: UIAlertAction.Style.default,  handler: {(alert :UIAlertAction!) in
+                self.sharedButtonTapped(self.imageView!)
+            })
+            let image1 = UIImage(named: "icons8-поделиться-30")
+            sharedAction.setValue(image1, forKey: "image")
+            alertController.addAction(sharedAction)
+        }
         
-        let sharedAction = UIAlertAction(title: "Поделиться", style: UIAlertAction.Style.default,  handler: {(alert :UIAlertAction!) in
-            self.sharedButtonTapped(0)
-        })
-        let image1 = UIImage(named: "icons8-поделиться-30")
-        sharedAction.setValue(image1, forKey: "image")
-        alertController.addAction(sharedAction)
-      
         let closeAction = UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.destructive, handler: {(alert :UIAlertAction!) in
             self.cancelbuttonTapped(0)
         })
@@ -216,7 +256,8 @@ class ShowImageVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDe
 
         let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.cancel)
         alertController.addAction(cancelAction)
-
+        
+        alertController.popoverPresentationController?.sourceView = self.view
         present(alertController, animated: true, completion: nil)
     }
     

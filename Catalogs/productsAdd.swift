@@ -157,11 +157,11 @@ class productsAdd : ElementCatalog<ProductsCD> {
                     self.categoryProduct = unit1
                     self.categoryText.text = unit1.name
                     self.setVisibleLables()
-
                 }
                 self.copyDataFromField(unit: self.unit)
             }
         }
+        
         if segue.identifier == "choiceUnit" {
             let controller = segue.destination.children[0] as! unitsCatalog
             controller.unit = self.unit?.unit
@@ -172,6 +172,23 @@ class productsAdd : ElementCatalog<ProductsCD> {
                     self.setVisibleLables()
                 }
                 self.copyDataFromField(unit: self.unit)
+            }
+        }
+        
+        if segue.identifier == pictureSegue {
+            let controller = segue.destination as! ShowImageVC
+            controller.image = self.imageElement.image
+            controller.nameUnit = self.shortName.text!
+            controller.nameCatalog = nameCatalog
+            if  self.unit == nil {
+                self.unit = createTypeElement()
+            }
+            self.copyDataFromField(unit: self.unit!)
+            controller.product = self.unit
+            if let image = unit?.image {
+                controller.image = UIImage(data: image as Data)
+            } else {
+                controller.image = nil
             }
         }
 

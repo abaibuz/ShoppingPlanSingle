@@ -128,5 +128,23 @@ class categoriesAdd : ElementCatalog<Categories> {
         }
     }
     
-  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == pictureSegue {
+            let controller = segue.destination as! ShowImageVC
+            controller.image = self.imageElement.image
+            controller.nameUnit = self.shortName.text!
+            controller.nameCatalog = nameCatalog
+            if  self.unit == nil {
+                self.unit = createTypeElement()
+            }
+            self.copyDataFromField(unit: self.unit!)
+            controller.product = self.unit
+            if let image = unit?.image {
+                controller.image = UIImage(data: image as Data)
+            } else {
+                controller.image = nil
+            }
+
+        }
+    }
 }
